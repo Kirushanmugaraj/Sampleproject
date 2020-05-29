@@ -1,0 +1,26 @@
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="col-sm-12">
+        <h1 class="m-0 text-dark">
+          My Details
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <%= bootstrap_form_for [:end_users, @user], layout: :horizontal, label_col: 'col-md-12', control_col: 'col-md-12' do |f| %>
+                <%= render partial: 'users/form', locals: {f: f} %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

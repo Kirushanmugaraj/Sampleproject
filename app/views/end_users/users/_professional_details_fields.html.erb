@@ -1,0 +1,10 @@
+<div class="nested-fields info-container" style="border: 1px dashed #999; border-radius: 5px; padding: 20px; width: 49%; display: inline-block; margin: 2px 0;">
+  <div class="form-group">
+    <%= f.text_field :prev_employer, class: "form-control", label: 'Previous Employer', required: true %>
+    <%= f.text_field :position, class: "form-control", label: 'Designation',required: true %>
+  </div>
+  <br/>
+  <center>
+    <%= link_to_remove_association fa_icon("trash-o"), f, :class=>"btn btn-danger" %>
+  </center>
+</div>

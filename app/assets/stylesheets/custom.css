@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap');
+$primary-color-dark: rgba(252,208,112,1);
+$primary-color:          #212121;
+$primary-color-light:  #D1C4E9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #e8be57;
+$primary-text-color:   #212121;
+$secondary-text-color: #4e4e4e;
+$divider-color:        #BDBDBD;
+$divider-color-light:  #f5f5f5;
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  color:$primary-text-color;
+}
+
+.content-wrapper {
+  margin-top: 100px;
+}
+
+.content-wrapper{
+  background:#edf0f5;
+}
+
+.alert.alert-notice.alert-dismissible {
+  position: absolute;
+  z-index: 1031;
+  width: 100%;
+  background: #dae7f5;
+  top: 75px;
+  max-width: 400px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: green;
+}
+
+.alert.alert-alert.alert-dismissible {
+  position: absolute;
+  z-index: 1031;
+  width: 100%;
+  background: #dae7f5;
+  top: 75px;
+  max-width: 400px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: red;
+}
+
+.navbar{
+  background:$primary-color-text!important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.37);
+  padding: 0 .75rem;
+  a.navbar-brand img {
+    width: auto;
+    height: 50px;
+  }
+  .navbar-nav .nav-link{
+    padding-right: .8rem;
+    padding-left: .8rem;
+    font-weight: 600;
+  }
+  .navbar-nav .active>.nav-link, .navbar-nav .nav-link.active, .navbar-nav .nav-link.show, .navbar-nav .show>.nav-link{
+    color: $primary-color-dark;
+  }
+  .dropdown img {
+    width: 24px;
+    margin-top: -5px;
+  }
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+div#adv-searchbox {
+  background: #ecf0f5;
+  border-top: 1px solid #f7f7f7;
+  border-bottom: 1px solid #f7f7f7;
+  display: none;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+}

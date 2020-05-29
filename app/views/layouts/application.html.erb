@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+    <title>
+      <%= t('general.application_title') %>
+    </title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render partial: 'layouts/modal' %>
+    <% if user_signed_in? %>
+      <% if current_user.is_admin? %>
+        <%= render partial: 'layouts/admin_headers' %>
+      <% elsif current_user.is_end_user? %>
+        <%= render partial: 'layouts/user_headers' %>
+      <% end %>
+    <% else %>
+      <%= render partial: 'layouts/public_headers' %>
+    <% end %>
+    <%= flash_messages %>
+    <%= yield %>
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8">
+            <span class="small"></span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline float-right"></ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

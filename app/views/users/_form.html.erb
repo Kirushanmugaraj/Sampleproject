@@ -1,0 +1,83 @@
+<% if f.object.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(f.object.errors.count, "error") %>
+      prohibited this User from being saved:
+    </h2>
+    <ul>
+      <% f.object.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-md-6 required">
+    <div class="form-group">
+      <%= f.text_field :username, class: "form-control", placeholder: "User Name" %>
+    </div>
+  </div>
+  <div class="col-md-6 required">
+    <div class="form-group">
+      <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div>
+  </div>
+  <div class="w-100"></div>
+  <% if f.object.new_record? %>
+    <div class="col-md-6 required">
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+      <span>
+        <p>hints: one capital letter, 1 spl character and more than 8 characters</p>
+      </span>
+    </div>
+  <% end %>
+  <%= f.fields_for :personal_detail do |pd| %>
+    <div class="col-md-6 required">
+      <%= pd.text_field :contact_no, class: 'form-control', placeholder: 'Contact Number' %>
+    </div>
+    <div class="col-md-6 required">
+      <%= pd.text_field :address, class: 'form-control', placeholder: 'Address' %>
+    </div>
+  <% end %>
+  <div class="w-100"></div>
+  <div class="col-md-12">
+    <h3>Education Detail</h3>
+    <div id="pocs">
+      <%= f.fields_for :education_details do |education_detail| %>
+        <%= render 'education_details_fields', f: education_detail %>
+      <% end %>
+      <div class="links mt-3">
+        <%= link_to_add_association 'Add Education', f, :education_details, partial: 'education_details_fields', class: "btn btn-primary btn-sm" %>
+      </div>
+    </div>
+  </div>
+  <div class="w-100"></div>
+  <hr/>
+  <div class="col-md-12">
+    <h3>Professional Detail</h3>
+    <div id="pocs">
+      <%= f.fields_for :professional_details do |professional_detail| %>
+        <%= render 'professional_details_fields', f: professional_detail %>
+      <% end %>
+      <div class="links mt-3">
+        <%= link_to_add_association 'Add Work Experience', f, :professional_details,  partial: 'professional_details_fields', class: "btn btn-primary btn-sm" %>
+      </div>
+    </div>
+  </div>
+  <div class="w-100"></div>
+  <hr/>
+  <div class="col-md-6">
+    <div class="form-group">
+      <%= button_tag type: "submit", class: "btn btn-primary btn-sm", data: {disable_with: "Please Wait..."} do %>
+        <%= fa_icon "floppy-o" %>
+        Save
+      <% end %>
+      <%= link_to new_user_session_path, class: "btn btn-danger btn-sm" do %>
+        <%= fa_icon "close" %>
+        Cancel
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="box-body" id="adv-searchbox">
+  <%= form_tag nil, method: :get, class: "filter-search-menu" do %>
+    <div class="row">
+      <%= hidden_field_tag :is_advanced_search, true %>
+      <div class="col-xs-6 col-md-3">
+        <div class="form-group">
+          <%= select_tag "college_name", options_for_select(fetch_all_college_name, params[:college_name]), prompt: 'Please Select College Name ', class: "form-control multiselect" %>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <div class="form-group">
+          <%= select_tag "degree_name", options_for_select(fetch_all_degree_name, params[:college_name]), prompt: 'Please Select Degree Name', class: "form-control multiselect" %>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-2">
+        <div class="form-group">
+          <%= button_tag type: "submit", class: "btn btn-primary btn-flatbtn btn-sm" do %>
+            <%= fa_icon "search" %>
+            Search
+          <% end %>
+          <%= link_to nil, class: "btn btn-default btn-sm pd-fixes" do %>
+            <%= fa_icon "refresh" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

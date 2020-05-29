@@ -1,0 +1,96 @@
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-md-9">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Users</li>
+          </ol>
+          <center>
+            <h1 class="m-0 text-dark">Users</h1>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <div class="box-header row">
+          <div class="pull-left col-md-6 mb-2">
+            <div class="input-group input-group-sm">
+              <div class="input-group-btn">
+                <a class="btn btn-primary btn-sm" href="javascript:void(0);" id="adv-search" style="margin-left:-2px;">
+                  Advanced Search
+                  <i class="fa fa-angle-down"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= render partial: "advance_search_form" %>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover dataTables table-sm responsive nowrap" style="width:100%!important">
+                <thead>
+                  <tr>
+                    <th class="all">UserName</th>
+                    <th class="all">Email</th>
+                    <th class="desktop">Contact</th>
+                    <th class="all">Address</th>
+                    <th class="desktop">EducationDetails</th>
+                    <th class="desktop">Work Experience</th>
+                    <th class="desktop">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @users.each do |user| %>
+                    <tr>
+                      <td>
+                        <%= user.username %>
+                      </td>
+                      <td>
+                        <%= user.email %>
+                      </td>
+                      <td>
+                        <%= user.personal_detail&.contact_no %>
+                      </td>
+                      <td>
+                        <%= user.personal_detail&.address %>
+                      </td>
+                      <td>
+                        <%= link_to (fa_icon "eye"), admin_user_education_details_path(user), remote: true, class: "btn btn-primary btn-sm" %>
+                      </td>
+                      <td>
+                        <%= link_to (fa_icon "eye"), admin_user_professional_details_path(user), remote: true, class: "btn btn-primary btn-sm" %>
+                      </td>
+                      <td>
+                        <%= link_to (fa_icon "trash"), admin_user_path(user), method: :delete, class: "btn btn-danger btn-sm", data: {confirm: 'Are You Sure want to Delete this User'} %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <% if @users.present? %>
+            <div class="pagination-custom-holder">
+              <strong style="margin-left: 0;"><%= "Users Count - #{@users.total_entries}"%></strong>
+              <%= will_paginate @users, :class  =>  "ct-pag" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
